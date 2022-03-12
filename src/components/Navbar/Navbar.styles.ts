@@ -6,6 +6,7 @@ export const NavbarStyles: IStyles = {
     backgroundColor: theme.palette.background.paper,
     padding: "15px 60px",
     position: "fixed",
+    zIndex: "10",
     boxShadow: "rgb(219 219 219 / 25%) 0px 4px 4px",
   },
   menu: {

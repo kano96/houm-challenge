@@ -26,7 +26,12 @@ const ThemeFonts = {
     h5: 20,
     h6: 16,
     body1: 18,
-    body2: 16,
+    body2: 14,
+    button: 16,
+    buttonsm: 14,
+    buttonlg: 20,
+    inputLabel: 14,
+    inputText: 16,
   },
   screenlg: {
     h1: 38,
@@ -36,7 +41,12 @@ const ThemeFonts = {
     h5: 18,
     h6: 16,
     body1: 18,
-    body2: 16,
+    body2: 13,
+    button: 16,
+    buttonsm: 14,
+    buttonlg: 20,
+    inputLabel: 14,
+    inputText: 16,
   },
   screenmd: {
     h1: 28,
@@ -46,7 +56,12 @@ const ThemeFonts = {
     h5: 18,
     h6: 16,
     body1: 17,
-    body2: 16,
+    body2: 12,
+    button: 15,
+    buttonsm: 13,
+    buttonlg: 18,
+    inputLabel: 14,
+    inputText: 15,
   },
   screensm: {
     h1: 23,
@@ -56,7 +71,12 @@ const ThemeFonts = {
     h5: 18,
     h6: 16,
     body1: 16,
-    body2: 14,
+    body2: 12,
+    button: 14,
+    buttonsm: 13,
+    buttonlg: 16,
+    inputLabel: 14,
+    inputText: 14,
   },
 };
 const breakpoints = {
@@ -226,6 +246,85 @@ const theme = createTheme({
       },
       [`@media screen and (max-width: ${breakpoints.values.sm}px)`]: {
         fontSize: ThemeFonts.screensm.body2 + `px`,
+      },
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          padding: "12px 30px",
+          height: "44px",
+          borderRadius: "50px",
+          fontWeight: "400",
+          letterSpacing: "0.0025em",
+          lineHeight: "140%",
+          fontFamily: "Nunito, sans-serif",
+          textTransform: "none",
+          fontSize: ThemeFonts.screenxl.button + `px`,
+          backgroundColor: Palette.primary.main,
+          [`@media screen and (max-width: ${breakpoints.values.lg}px)`]: {
+            fontSize: ThemeFonts.screenlg.button + `px`,
+          },
+          [`@media screen and (max-width: ${breakpoints.values.md}px)`]: {
+            fontSize: ThemeFonts.screenmd.button + `px`,
+          },
+          [`@media screen and (max-width: ${breakpoints.values.sm}px)`]: {
+            fontSize: ThemeFonts.screensm.button + `px`,
+          },
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: Palette.text.secondary,
+          fontSize: ThemeFonts.screenxl.inputText + `px`,
+          [`@media screen and (max-width: ${breakpoints.values.lg}px)`]: {
+            fontSize: ThemeFonts.screenlg.inputText + `px`,
+          },
+          [`@media screen and (max-width: ${breakpoints.values.md}px)`]: {
+            fontSize: ThemeFonts.screenmd.inputText + `px`,
+          },
+          [`@media screen and (max-width: ${breakpoints.values.sm}px)`]: {
+            fontSize: ThemeFonts.screensm.inputText + `px`,
+          },
+        },
+        outlined: {
+          borderRadius: "50px",
+          top: "-5px",
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: "8px!important",
+          position: "relative",
+          input: {
+            padding: "10.5px 14px",
+            color: Palette.text.secondary,
+            fontSize: ThemeFonts.screenxl.inputText + `px`,
+            [`@media screen and (max-width: ${breakpoints.values.lg}px)`]: {
+              fontSize: ThemeFonts.screenlg.inputText + `px`,
+            },
+            [`@media screen and (max-width: ${breakpoints.values.md}px)`]: {
+              fontSize: ThemeFonts.screenmd.inputText + `px`,
+            },
+            [`@media screen and (max-width: ${breakpoints.values.sm}px)`]: {
+              fontSize: ThemeFonts.screensm.inputText + `px`,
+            },
+          },
+        },
+      },
+    },
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+          color: Palette.text.secondary + "!important",
+          // eslint-disable-next-line no-useless-concat
+          top: "-6px" + "!important",
+        },
       },
     },
   },
