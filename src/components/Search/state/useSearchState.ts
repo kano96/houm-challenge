@@ -34,7 +34,7 @@ const useSearchState = () => {
       try {
         dispatch(showLoading);
 
-        const apiUrl = buildApiUrl(status, gender, page, name);
+        const apiUrl = buildApiUrl({ status, gender, page, name });
         const { data } = await axios.get(apiUrl);
         const info = data.info;
         const character = data.results;

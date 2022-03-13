@@ -47,7 +47,7 @@ const useCardListState = () => {
       try {
         dispatch(showLoading());
 
-        const API_URL = buildApiUrl(status, gender, page, name);
+        const API_URL = buildApiUrl({ status, gender, page, name });
         const { data } = await axios.get(API_URL);
         const info = data.info;
         const characters = data.results;

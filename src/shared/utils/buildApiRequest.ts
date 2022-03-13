@@ -1,11 +1,18 @@
 const RICK_AND_MORTY_API = "https://rickandmortyapi.com/api/character";
 
-export const buildApiUrl = (
-  status = "",
-  gender = "",
-  page: number = 1,
-  name = ""
-): string => {
+export interface builApiUrlParams {
+  status: string;
+  gender: string;
+  page: number;
+  name: string;
+}
+
+export const buildApiUrl = ({
+  status,
+  gender,
+  page,
+  name,
+}: builApiUrlParams): string => {
   if (status && gender) {
     return `${RICK_AND_MORTY_API}/?page=${page}&gender=${gender}&status=${status}`;
   }
