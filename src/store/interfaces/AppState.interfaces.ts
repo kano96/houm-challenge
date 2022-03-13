@@ -25,14 +25,14 @@ export type Status = "alive" | "dead" | "unknown" | "";
 export interface IFilters {
   status: Status;
   gender: Gender;
+  name: string;
+  page: number;
 }
 
 export interface IAppState {
   loading: boolean;
   characters: ICharacter[];
-  page: number;
   filters: IFilters;
   totalResults: number;
   totalPages: number;
-  name: string;
 }

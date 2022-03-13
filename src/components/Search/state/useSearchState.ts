@@ -2,10 +2,11 @@ import axios from "axios";
 import React, { FormEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { buildApiUrl } from "../../../shared/utils/buildApiRequest";
+import { Gender, Status } from "../../../store/interfaces/AppState.interfaces";
 import {
   hideLoading,
   setCharacters,
-  setName,
+  setFilters,
   setTotalPages,
   setTotalResults,
   showLoading,
@@ -18,14 +19,14 @@ import {
 } from "../../../store/selectors/selectors";
 
 const useSearchState = () => {
-  const status: string = useSelector(statusFilterSelector);
-  const gender: string = useSelector(genderFilterSelector);
+  const status: Status = useSelector(statusFilterSelector);
+  const gender: Gender = useSelector(genderFilterSelector);
   const page: number = useSelector(pageSelector);
   const name: string = useSelector(nameSelector);
   const dispatch = useDispatch();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setName(event.target.value));
+    dispatch(setFilters({ status, gender, page, name: event.target.value }));
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -43,6 +44,7 @@ const useSearchState = () => {
         dispatch(setTotalResults(info.count));
         dispatch(setCharacters(character));
       } catch (e) {
+        dispatch(setTotalResults(0));
       } finally {
         dispatch(hideLoading);
       }

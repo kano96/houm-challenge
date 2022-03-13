@@ -3,14 +3,18 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { buildApiUrl } from "../../../shared/utils/buildApiRequest";
-import { ICharacter } from "../../../store/interfaces/AppState.interfaces";
+import {
+  Gender,
+  ICharacter,
+  Status,
+} from "../../../store/interfaces/AppState.interfaces";
 import {
   showLoading,
   setCharacters,
   setTotalPages,
   setTotalResults,
   hideLoading,
-  setPage,
+  setFilters,
 } from "../../../store/reducers/app";
 import {
   charactersSelector,
@@ -24,8 +28,8 @@ import {
 } from "../../../store/selectors/selectors";
 
 const useCardListState = () => {
-  const status: string = useSelector(statusFilterSelector);
-  const gender: string = useSelector(genderFilterSelector);
+  const status: Status = useSelector(statusFilterSelector);
+  const gender: Gender = useSelector(genderFilterSelector);
   const page: number = useSelector(pageSelector);
   const name: string = useSelector(nameSelector);
   const characters: ICharacter[] = useSelector(charactersSelector);
@@ -39,7 +43,7 @@ const useCardListState = () => {
     _event: React.ChangeEvent<unknown>,
     value: number
   ) => {
-    dispatch(setPage(value));
+    dispatch(dispatch(setFilters({ status, gender, page: value, name })));
   };
 
   useEffect(() => {
@@ -56,6 +60,7 @@ const useCardListState = () => {
         dispatch(setTotalPages(info.pages));
         dispatch(setTotalResults(info.count));
       } catch (e) {
+        dispatch(setTotalResults(0));
       } finally {
         dispatch(hideLoading());
       }

@@ -1,19 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
-  Gender,
   IAppState,
   ICharacter,
-  Status,
+  IFilters,
 } from "../interfaces/AppState.interfaces";
 
 export const initialState: IAppState = {
   loading: false,
   characters: [],
-  page: 1,
   totalResults: 0,
   totalPages: 0,
-  filters: { gender: "", status: "" },
-  name: "",
+  filters: { gender: "", status: "", name: "", page: 1 },
 };
 
 export const appSlice = createSlice({
@@ -26,17 +23,6 @@ export const appSlice = createSlice({
     setCharacters: (state, action: PayloadAction<ICharacter[]>) => {
       state.characters = action.payload;
     },
-    setPage: (state, action: PayloadAction<number>) => {
-      state.page = action.payload;
-    },
-    setStatusFilter: (state, action: PayloadAction<Status>) => {
-      state.filters.status = action.payload;
-      state.page = 1;
-    },
-    setGenderFilter: (state, action: PayloadAction<Gender>) => {
-      state.filters.gender = action.payload;
-      state.page = 1;
-    },
     showLoading: (state) => {
       state.loading = true;
     },
@@ -46,24 +32,19 @@ export const appSlice = createSlice({
     setTotalPages: (state, action: PayloadAction<number>) => {
       state.totalPages = action.payload;
     },
-    setName: (state, action: PayloadAction<string>) => {
-      console.log("entré a set name");
-      console.log(action.payload);
-      state.name = action.payload;
+    setFilters: (state, action: PayloadAction<IFilters>) => {
+      state.filters = action.payload;
     },
   },
 });
 
 export const {
   setCharacters,
-  setStatusFilter,
-  setGenderFilter,
-  setPage,
   setTotalPages,
   showLoading,
   hideLoading,
   setTotalResults,
-  setName,
+  setFilters,
 } = appSlice.actions;
 
 export default appSlice.reducer;

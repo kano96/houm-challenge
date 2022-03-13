@@ -1,19 +1,36 @@
-import appReducer, { initialState, setStatusFilter, setPage } from "./app";
+import appReducer, { initialState, setFilters } from "./app";
 
 describe("appReducer", () => {
   it("should set page", () => {
-    const newState = appReducer(initialState, setPage(1));
+    const newState = appReducer(
+      initialState,
+      setFilters({
+        ...initialState.filters,
+        page: 2,
+      })
+    );
 
     const expected = {
       ...initialState,
-      page: 1,
+      filters: {
+        ...initialState.filters,
+        page: 2,
+      },
     };
 
     expect(newState).toEqual(expected);
   });
 
   it("should set status filter", () => {
-    expect(appReducer(initialState, setStatusFilter("dead"))).toEqual({
+    expect(
+      appReducer(
+        initialState,
+        setFilters({
+          ...initialState.filters,
+          status: "dead",
+        })
+      )
+    ).toEqual({
       ...initialState,
       filters: {
         ...initialState.filters,

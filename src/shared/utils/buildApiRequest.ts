@@ -13,8 +13,17 @@ export const buildApiUrl = ({
   page,
   name,
 }: builApiUrlParams): string => {
+  if (status && gender && name) {
+    return `${RICK_AND_MORTY_API}/?page=${page}&gender=${gender}&status=${status}&name=${name}`;
+  }
   if (status && gender) {
     return `${RICK_AND_MORTY_API}/?page=${page}&gender=${gender}&status=${status}`;
+  }
+  if (status && name) {
+    return `${RICK_AND_MORTY_API}/?page=${page}&name=${name}&status=${status}`;
+  }
+  if (name && gender) {
+    return `${RICK_AND_MORTY_API}/?page=${page}&gender=${gender}&name=${name}`;
   }
   if (status) {
     return `${RICK_AND_MORTY_API}/?page=${page}&status=${status}`;
