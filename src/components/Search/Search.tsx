@@ -1,8 +1,10 @@
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import React from "react";
-import { SeatchStyles as styles } from "./Search.styles";
+import { SeatchStyles as styles, FormStyles } from "./Search.styles";
+import useSearchState from "./state/useSearchState";
 
 const Search: React.FC = () => {
+  const { handleInputChange, handleSubmit, name } = useSearchState();
   return (
     <Grid container justifyContent="center" sx={styles.container}>
       <Grid item>
@@ -13,15 +15,18 @@ const Search: React.FC = () => {
           by: Kevin Torres
         </Typography>
       </Grid>
-      <Grid item>
-        <TextField
-          label="Type a character"
-          onChange={() => {}}
-          sx={styles.textField}
-        />
-        <Button>
-          <Typography color="white">Search</Typography>
-        </Button>
+      <Grid item container sx={styles.searchContainer}>
+        <form onSubmit={handleSubmit} style={FormStyles}>
+          <TextField
+            label="Type a character"
+            onChange={handleInputChange}
+            sx={styles.textField}
+            value={name}
+          />
+          <Button sx={styles.button} type="submit">
+            <Typography color="white">Search</Typography>
+          </Button>
+        </form>
       </Grid>
     </Grid>
   );

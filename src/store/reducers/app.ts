@@ -13,6 +13,7 @@ export const initialState: IAppState = {
   totalResults: 0,
   totalPages: 0,
   filters: { gender: "", status: "" },
+  name: "",
 };
 
 export const appSlice = createSlice({
@@ -45,6 +46,11 @@ export const appSlice = createSlice({
     setTotalPages: (state, action: PayloadAction<number>) => {
       state.totalPages = action.payload;
     },
+    setName: (state, action: PayloadAction<string>) => {
+      console.log("entré a set name");
+      console.log(action.payload);
+      state.name = action.payload;
+    },
   },
 });
 
@@ -57,6 +63,7 @@ export const {
   showLoading,
   hideLoading,
   setTotalResults,
+  setName,
 } = appSlice.actions;
 
 export default appSlice.reducer;

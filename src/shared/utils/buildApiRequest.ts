@@ -1,6 +1,11 @@
 const RICK_AND_MORTY_API = "https://rickandmortyapi.com/api/character";
 
-export const buildApiUrl = (status = "", gender = "", page = 1): string => {
+export const buildApiUrl = (
+  status = "",
+  gender = "",
+  page: number = 1,
+  name = ""
+): string => {
   if (status && gender) {
     return `${RICK_AND_MORTY_API}/?page=${page}&gender=${gender}&status=${status}`;
   }
@@ -10,7 +15,9 @@ export const buildApiUrl = (status = "", gender = "", page = 1): string => {
   if (gender) {
     return `${RICK_AND_MORTY_API}/?page=${page}&gender=${gender}`;
   }
-  console.log(`${RICK_AND_MORTY_API}/?page=${page}`);
+  if (name) {
+    return `${RICK_AND_MORTY_API}/?page=${page}&name=${name}`;
+  }
 
   return `${RICK_AND_MORTY_API}/?page=${page}`;
 };

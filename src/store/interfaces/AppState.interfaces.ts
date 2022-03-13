@@ -34,4 +34,5 @@ export interface IAppState {
   filters: IFilters;
   totalResults: number;
   totalPages: number;
+  name: string;
 }

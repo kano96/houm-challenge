@@ -8,6 +8,10 @@ export const NavbarStyles: IStyles = {
     position: "fixed",
     zIndex: "10",
     boxShadow: "rgb(219 219 219 / 25%) 0px 4px 4px",
+    flexDirection: {
+      xs: "column",
+      md: "row",
+    },
   },
   menu: {
     display: "flex",

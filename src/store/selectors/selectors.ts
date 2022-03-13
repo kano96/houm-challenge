@@ -14,3 +14,5 @@ export const totalResultsSelector = (state: RootState) =>
 export const charactersSelector = (state: RootState) => state.app.characters;
 
 export const totalPagesSelector = (state: RootState) => state.app.totalPages;
+
+export const nameSelector = (state: RootState) => state.app.name;

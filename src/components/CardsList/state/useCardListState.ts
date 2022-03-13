@@ -16,6 +16,7 @@ import {
   charactersSelector,
   genderFilterSelector,
   loadingSelector,
+  nameSelector,
   pageSelector,
   statusFilterSelector,
   totalPagesSelector,
@@ -26,6 +27,7 @@ const useCardListState = () => {
   const status: string = useSelector(statusFilterSelector);
   const gender: string = useSelector(genderFilterSelector);
   const page: number = useSelector(pageSelector);
+  const name: string = useSelector(nameSelector);
   const characters: ICharacter[] = useSelector(charactersSelector);
   const totalPages: number = useSelector(totalPagesSelector);
   const results: number = useSelector(totalResultsSelector);
@@ -45,7 +47,7 @@ const useCardListState = () => {
       try {
         dispatch(showLoading());
 
-        const API_URL = buildApiUrl(status, gender, page);
+        const API_URL = buildApiUrl(status, gender, page, name);
         const { data } = await axios.get(API_URL);
         const info = data.info;
         const characters = data.results;

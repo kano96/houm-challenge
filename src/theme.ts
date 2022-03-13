@@ -299,10 +299,10 @@ const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          borderRadius: "8px!important",
+          borderRadius: "50px!important",
           position: "relative",
           input: {
-            padding: "10.5px 14px",
+            padding: "10.5px 20px",
             color: Palette.text.secondary,
             fontSize: ThemeFonts.screenxl.inputText + `px`,
             [`@media screen and (max-width: ${breakpoints.values.lg}px)`]: {
