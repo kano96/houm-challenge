@@ -10,18 +10,21 @@ export const FormStyles: object = {
 
 export const SeatchStyles: IStyles = {
   container: {
+    paddingTop: "15px",
     flexDirection: "column",
     gap: "20px",
   },
   searchContainer: {
     flexDirection: "column",
     alignItems: "center",
+    paddingTop: "15px",
   },
   textField: {
     borderRadius: "50px",
     minWidth: "250px",
     width: "50%",
     outline: "none",
+    marginTop: "5px",
   },
   button: {
     width: "100px",

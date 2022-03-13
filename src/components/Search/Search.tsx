@@ -1,4 +1,5 @@
 import {
+  Button,
   Grid,
   IconButton,
   InputAdornment,
@@ -27,7 +28,7 @@ const Search: React.FC = () => {
       <Grid item container sx={styles.searchContainer}>
         <form onSubmit={handleSubmit} style={FormStyles}>
           <TextField
-            label="Search a character"
+            label="Type a character"
             onChange={handleInputChange}
             sx={styles.textField}
             value={name}
@@ -49,6 +50,9 @@ const Search: React.FC = () => {
                 : {}
             }
           />
+          <Button sx={styles.button} type="submit">
+            <Typography color="white">Search</Typography>
+          </Button>
         </form>
       </Grid>
     </Grid>

@@ -65,7 +65,7 @@ const useCardListState = () => {
         dispatch(hideLoading());
       }
     })();
-  }, [status, gender, page, name]);
+  }, [status, gender, page]);
 
   return { characters, totalPages, page, results, isLoading, handleChangePage };
 };
