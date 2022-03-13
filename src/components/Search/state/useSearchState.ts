@@ -29,6 +29,10 @@ const useSearchState = () => {
     dispatch(setFilters({ status, gender, page, name: event.target.value }));
   };
 
+  const clearSearch = () => {
+    dispatch(setFilters({ status, gender, page, name: "" }));
+  };
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (name) {
@@ -54,6 +58,7 @@ const useSearchState = () => {
   return {
     handleSubmit,
     handleInputChange,
+    clearSearch,
     name,
   };
 };

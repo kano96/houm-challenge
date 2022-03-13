@@ -9,8 +9,8 @@ const Filters: React.FC = () => {
     useFiltersState();
 
   return (
-    <Grid container justifyContent="center">
-      <Grid item>
+    <Grid container justifyContent="center" sx={styles.container}>
+      <Grid item sx={styles.filterCamp}>
         <Typography variant="body1">Filter by status: </Typography>
         <Select
           value={status}
@@ -25,7 +25,7 @@ const Filters: React.FC = () => {
           <MenuItem value="unknown">Unknown</MenuItem>
         </Select>
       </Grid>
-      <Grid item>
+      <Grid item sx={styles.filterCamp}>
         <Typography variant="body1">Filter by gender: </Typography>
         <Select
           value={gender}
