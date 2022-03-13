@@ -46,7 +46,7 @@ const Search: React.FC = () => {
                       </InputAdornment>
                     ),
                   }
-                : null
+                : {}
             }
           />
         </form>
